@@ -1,0 +1,51 @@
+$card-width: 300px; // scss bug with multiple custom properties within grid-template
+
+:root {
+  --card-count: 5;
+  --card-width: #{$card-width};
+  --card-gap: 20px;
+}
+
+.carousel {
+  
+  grid-template-columns: repeat(var(--card-count), minmax($card-width, 1fr));
+  gap: var(--card-gap);
+
+  &-container {
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    margin: 0 10px;
+    scrollbar-color: #1f68dc #5988e4;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      height: 20px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      border: 5px solid transparent;
+      background-clip: content-box;
+      background-color: rgb(255 255 255 / 20%);
+    }
+  }
+
+  &-nav {
+    z-index: 1;
+  }
+
+  .card {
+    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    border: none;
+    border-radius: 3rem;
+  }
+
+}

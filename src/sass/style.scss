@@ -1,0 +1,26 @@
+/*!
+    Theme Name: Simple landing page
+    Description: Super fast static website
+    Version: 1.0.0
+    Author: RW
+    Author URI: 
+*/
+
+// Base
+@import "base/variables";
+@import "base/reset";
+@import "base/layout";
+@import "base/typography";
+@import "base/utilities";
+
+// Components
+
+@import "components/nav";
+@import "components/forms";
+@import "components/buttons";
+@import "components/card";
+@import "components/carousel";
+@import "components/pricing";
+@import "components/hero";
+// @import "components/modal";
+

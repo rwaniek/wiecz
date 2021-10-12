@@ -1,0 +1,72 @@
+body {
+  background: linear-gradient(152deg,#65a0ff, #004ecc 45%, #00348e 85%);
+}
+
+main {
+  color: #fff;
+}
+
+.testimonials {
+  position: relative;
+  background-color: #1f68dc;
+  // background-image: url(img/suburbs.svg);
+  // background-repeat: no-repeat;
+
+  .decor {
+    width: 20%;
+    min-width: 300px;
+    height: auto;
+    right: 2rem;
+    bottom: 0;
+  }
+
+}
+
+footer {
+  color: #ccc;
+}
+
+.howto {
+  font-size: 1rem;
+  font-size: clamp(1rem, calc(1rem + 0.5vw), 1.5rem);
+  overflow: hidden;
+
+  .report-wrapper {
+
+    min-height: 400px;
+    // max-width: 600px;
+
+    img {
+      max-width: 600px;
+      height: auto;
+      transition: all 1.5s ease-in-out;
+    }
+  }
+
+  .counter div:last-child .circle {
+    background-color: #ffdf80;
+    border-color: #ffc108;
+    color: #000;
+  }
+  
+}
+
+.contact {
+  background-color: #3b7be3;
+}
+
+.container--xl {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.container--lg {
+  max-width: 1000px;
+  margin: auto;
+}
+
+hr {
+  width: 50px;
+  border: 0;
+  border-top: 2px solid #fff;
+}

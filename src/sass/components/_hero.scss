@@ -1,0 +1,71 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-image: url(img/wooden_home.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media (min-width: 1921px) {
+    min-height: 700px;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    // transform: rotate(-33deg) scale(1.5);
+    background-color: #fff;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    // z-index: -2;
+    opacity: 0.75;
+
+    @media (min-width: 576px) {
+      transform: rotate(290deg) scale(1.5);
+      left: -60%;
+    }
+
+    @media (min-width: 1921px) {
+      transform: rotate(290deg) scale(2.5);
+    }
+  }
+
+  &__inner {
+
+    //@media (min-width: 992px) {
+      // background-image: url(img/archives_illustration.svg);
+      // background-repeat: no-repeat;
+      // background-position: 100% 35%;
+      // background-size: 42%;
+    //}
+
+    .jumbo {
+      max-width: 550px;
+      z-index: 1;
+      position: relative;
+      
+      @media (min-width: 576px) {
+        width: 70%;
+      }
+
+      @media (min-width: 768px) {
+        width: 60%;
+      }
+
+    }
+  }
+
+  h1 {
+    color: #2d7af6;
+  }
+
+  p {
+    font-size: 1rem;
+    font-size: clamp(1rem, calc(1rem + 0.5vw), 1.5rem);
+  }
+
+  .tagline {
+    font-size: clamp(0.8rem, calc(0.8rem + 0.5vw), 1.3rem);
+  }
+}

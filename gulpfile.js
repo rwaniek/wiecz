@@ -21,7 +21,9 @@ const paths = {
     dest: './dist'
   },
   scripts: {
-    src: './src/js/**/*.js',
+    src: ['./src/js/custom.js', './src/js/**/*.js' ],
+    bootstrap_dom: './src/bootstrap-dom/**/*.js',
+    bootstrap_plugs: './src/bootstrap-plugins/**/*.js',
     dest: './dist/js'
   }
 };
@@ -43,7 +45,7 @@ function styles() {
       Browserslist: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(cssnano({ zindex: false }))
+    .pipe(cssnano({ zindex: false, convertValues: false }))
     .pipe(rename( { suffix: '.min' }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.styles.dest))
@@ -56,7 +58,7 @@ function scripts() {
     .pipe(babel({
       presets: [
         ['@babel/env', {
-          modules: false
+          modules: "auto"
         }]
       ]
     }))
@@ -67,9 +69,43 @@ function scripts() {
     .pipe(notify( { message: 'Scripts task completed!', onLast: true, sound: 'Frog' } ) );
 }
 
+function bootstrapDom() {
+  return gulp.src(paths.scripts.bootstrap_dom, { sourcemaps: true })
+    .pipe(babel({
+      presets: [
+        ['@babel/env', {
+          modules: "auto"
+        }]
+      ]
+    }))
+    .pipe(concat( 'bootstrap-dom.js' ) )
+    .pipe(rename( { suffix: '.min' }))
+    .pipe(uglify() )
+    .pipe(gulp.dest(paths.scripts.dest, {sourcemaps: true}) )
+    .pipe(notify( { message: 'Bootstrap DOM compiled!', onLast: true, sound: 'Frog' } ) );
+}
+
+function bootstrapPlugins() {
+  return gulp.src(paths.scripts.bootstrap_plugs, { sourcemaps: true })
+    .pipe(babel({
+      presets: [
+        ['@babel/env', {
+          modules: "auto"
+        }]
+      ]
+    }))
+    .pipe(concat( 'bootstrap-plugins.js' ) )
+    .pipe(rename( { suffix: '.min' }))
+    .pipe(uglify() )
+    .pipe(gulp.dest(paths.scripts.dest, {sourcemaps: true}) )
+    .pipe(notify( { message: 'Bootstrap plugins compiled!', onLast: true, sound: 'Frog' } ) );
+}
+
 function watch() {
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.scripts.src, scripts);
+  gulp.watch(paths.scripts.bootstrap_dom, bootstrapDom);
+  gulp.watch(paths.scripts.bootstrap_plugs, bootstrapPlugins);
 }
 
 /*
@@ -78,6 +114,8 @@ function watch() {
 
 exports.styles = styles;
 exports.scripts = scripts;
+exports.bootstrapDom = bootstrapDom;
+exports.bootstrapPlugins = bootstrapPlugins;
 exports.watch = watch;
-exports.default = gulp.parallel(gulp.series(styles, scripts), watch);
+exports.default = gulp.parallel(gulp.series(styles, scripts, bootstrapDom, bootstrapPlugins), watch);
 
