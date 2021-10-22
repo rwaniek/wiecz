@@ -6,7 +6,7 @@ nav {
   transition: all 0.4s ease-out;
   transition-delay: 0.3s;
   background-color: #fff;
-  border: 3px solid rgb(39 38 38 / 23%);
+  // border: 3px solid rgb(39 38 38 / 23%);
   
   @media (min-width: 768px) {
     position: absolute;
@@ -53,11 +53,11 @@ nav {
 
 .nav-toggler {
   position: fixed;
-  background-color: rgb(255 255 255 / 65%);
+  background-color: rgb(255 255 255 / 75%);
   z-index: 2;
   top: 0;
   right: 0;
-  border: 1px solid #e8e8e8;
+  // border: 1px solid #e8e8e8;
   // border-radius: 0;
   border-radius: 50%;
   border-bottom-right-radius: 0;
