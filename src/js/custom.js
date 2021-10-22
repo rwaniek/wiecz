@@ -4,18 +4,34 @@
  */
 
 /**
-   * 
-   * @param {DOM Element} elem 
-   * @returns {boolean}
-   */
+ * 
+ * @param {DOM Element} elem 
+ * @returns {boolean}
+ */
   
- const isInViewport = function (elem) {
-  // console.log('checking viewport');
+function isInViewport(elem) {
+  //console.log('checking viewport');
   let bounding = elem.getBoundingClientRect();
   return (
     bounding.top >= 0 &&
+    bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    // bounding.left >= 0 &&
+    // bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+/**
+ * 
+ * @param {DOM Element} elem 
+ * @returns {boolean}
+ */
+
+function fitInViewportX (elem) {
+  // console.log('fits in viewport horizontally');
+  let bounding = elem.getBoundingClientRect();
+
+  return (
     bounding.left >= 0 &&
-    bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
     bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 };
@@ -30,7 +46,7 @@ const manipulateImg = function(el, triggerEl) {
 
   if(isInViewport(triggerEl)) {
     
-    el.style.transform = "translateY(-20px)";
+    el.style.transform = "translateY(30px)";
   } else {
     
     el.style.transform = "initial";
@@ -107,10 +123,7 @@ const manipulateImg = function(el, triggerEl) {
     });
   }, false);
 
-    let navToggler = document.querySelector('.nav-toggler');
     let nav = document.querySelector('nav');
-    let navClose = document.querySelector('nav .btn-close');
-    let navLinks = document.querySelectorAll('nav a');
 
     document.addEventListener('click', function(event){
 
@@ -131,8 +144,6 @@ const manipulateImg = function(el, triggerEl) {
 
     });
     
-
-  
 
 })();
 

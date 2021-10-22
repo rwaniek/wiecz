@@ -39,7 +39,8 @@ footer {
     img {
       max-width: 600px;
       height: auto;
-      transition: all 1.5s ease-in-out;
+      transition: all 2.5s ease-in-out;
+      transform: translateY(-20px);
     }
   }
 

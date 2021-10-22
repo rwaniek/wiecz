@@ -32,22 +32,22 @@
    */
   let updateNav = function(){
 
-    if (isInViewport(firstSlide) && isInViewport(lastSlide)) {
+    if (fitInViewportX(firstSlide) && fitInViewportX(lastSlide)) {
       buttonPrev.parentElement.classList.add('invisible');
       return;
 
     } else {
       buttonPrev.parentElement.classList.remove('invisible');
 
-      if (isInViewport(firstSlide)) {
+      if (fitInViewportX(firstSlide)) {
         buttonPrev.classList.add('disabled');
         buttonNext.classList.remove('disabled');
       }
-      else if (isInViewport(lastSlide)) {
+      else if (fitInViewportX(lastSlide)) {
         buttonNext.classList.add('disabled');
         buttonPrev.classList.remove('disabled');
       }
-      else if (!isInViewport(firstSlide) && !isInViewport(lastSlide)){
+      else if (!fitInViewportX(firstSlide) && !fitInViewportX(lastSlide)){
         buttonPrev.classList.remove('disabled');
         buttonNext.classList.remove('disabled');
       }
@@ -84,7 +84,7 @@
   }, false);
 
   updateNav();
-
+  // console.log('carousel.js');
 })();
 
 
